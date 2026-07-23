@@ -59,6 +59,9 @@ export interface Quotation {
   mobile: string;
   destination: string;
   pax: number;
+  adults?: number;
+  children?: number;
+  vehicleType?: string;
   clientType: "B2B" | "B2C";
   type: string;
   status: QuotationStatus;

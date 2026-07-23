@@ -77,7 +77,7 @@ export function QuotationForm({ initialData, isNew }: QuotationFormProps) {
   let derivedBalance = 0;
   
   if (editingQuotation) {
-    const hasVehicleRates = (editingQuotation.vehicles || []).some(v => v.rate > 0);
+    const hasVehicleRates = (editingQuotation.vehicles || []).some(v => Number(v.rate) > 0);
     if (hasVehicleRates) {
       baseFare = (editingQuotation.vehicles || []).reduce((acc, v) => acc + (Number(v.qty || 0) * Number(v.days || 0) * Number(v.rate || 0)), 0);
     } else {
@@ -118,7 +118,7 @@ export function QuotationForm({ initialData, isNew }: QuotationFormProps) {
       alert("Persons cannot be 0. Please fix the error before saving.");
       return;
     }
-    const hasZeroQtyVehicles = (editingQuotation.vehicles || []).some(v => v.qty === 0);
+    const hasZeroQtyVehicles = (editingQuotation.vehicles || []).some(v => Number(v.qty) === 0);
     if (hasZeroQtyVehicles) {
       alert("Vehicle quantity cannot be 0. Please fix the error before saving.");
       return;
@@ -410,9 +410,9 @@ export function QuotationForm({ initialData, isNew }: QuotationFormProps) {
                           type="number" 
                           value={v.qty !== undefined ? v.qty : 1} 
                           onChange={e => { const u = [...(editingQuotation.vehicles || [])]; u[idx].qty = (e.target.value === '' ? '' : parseInt(e.target.value) || 0) as any; setEditField("vehicles", u); }} 
-                          className={`h-10 text-[13px] ${v.qty === 0 ? 'border-red-500 focus-visible:ring-red-500' : ''}`} 
+                          className={`h-10 text-[13px] ${Number(v.qty) === 0 ? 'border-red-500 focus-visible:ring-red-500' : ''}`} 
                         />
-                        {v.qty === 0 && <p className="text-[10px] text-red-500 font-bold absolute -bottom-4">Qty cannot be 0</p>}
+                        {Number(v.qty) === 0 && <p className="text-[10px] text-red-500 font-bold absolute -bottom-4">Qty cannot be 0</p>}
                       </div>
                       <div className="space-y-1.5 relative">
                         <label className="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Days</label>
@@ -717,7 +717,7 @@ export function QuotationForm({ initialData, isNew }: QuotationFormProps) {
                   
                   <div className="space-y-3 text-[14px]">
                     <div className="flex justify-between items-center">
-                      <span className="text-slate-400">Base fare <span className="text-[11px]">({(editingQuotation.vehicles||[]).length > 0 ? `${(editingQuotation.vehicles||[]).reduce((a, v) => a + (v.days || 0), 0)} days · ${(editingQuotation.vehicles||[]).length} veh` : 'Package'})</span></span>
+                      <span className="text-slate-400">Base fare <span className="text-[11px]">({(editingQuotation.vehicles||[]).length > 0 ? `${(editingQuotation.vehicles||[]).reduce((a, v) => a + (Number(v.days) || 0), 0)} days · ${(editingQuotation.vehicles||[]).length} veh` : 'Package'})</span></span>
                       <span className="font-semibold text-slate-200">₹{baseFare.toLocaleString('en-IN')}</span>
                     </div>
                     <div className="flex justify-between items-center">
