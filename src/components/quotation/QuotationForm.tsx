@@ -79,7 +79,7 @@ export function QuotationForm({ initialData, isNew }: QuotationFormProps) {
   if (editingQuotation) {
     const hasVehicleRates = (editingQuotation.vehicles || []).some(v => v.rate > 0);
     if (hasVehicleRates) {
-      baseFare = (editingQuotation.vehicles || []).reduce((acc, v) => acc + ((v.qty || 0) * (v.days || 0) * (v.rate || 0)), 0);
+      baseFare = (editingQuotation.vehicles || []).reduce((acc, v) => acc + (Number(v.qty || 0) * Number(v.days || 0) * Number(v.rate || 0)), 0);
     } else {
       baseFare = editingQuotation.rateCard?.packagePrice || 0;
     }

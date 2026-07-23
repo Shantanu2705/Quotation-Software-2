@@ -105,7 +105,7 @@ export default function ReportsPage() {
       if (b.vehicles && b.vehicles.length > 0) {
         b.vehicles.forEach(v => {
           if (v.vehicleType) {
-            const vRev = (v.qty || 1) * (v.days || 1) * (v.rate || 0);
+            const vRev = Number(v.qty || 1) * Number(v.days || 1) * Number(v.rate || 0);
             revMap[v.vehicleType] = (revMap[v.vehicleType] || 0) + vRev;
           }
         });
@@ -159,7 +159,7 @@ export default function ReportsPage() {
       if (b.vehicles && b.vehicles.length > 0) {
         b.vehicles.forEach(v => {
           if (v.vehicleType) {
-            const days = (v.qty || 1) * (v.days || 0);
+            const days = Number(v.qty || 1) * Number(v.days || 0);
             utilMap[v.vehicleType] = (utilMap[v.vehicleType] || 0) + days;
           }
         });
