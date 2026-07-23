@@ -35,9 +35,9 @@ export interface ItineraryDay {
 
 export interface QuotationVehicle {
   vehicleType: string;
-  qty: number;
-  days: number;
-  rate: number;
+  qty: number | string;
+  days: number | string;
+  rate: number | string;
   vehicleNumber: string;
   driverName: string;
   driverPhone: string;

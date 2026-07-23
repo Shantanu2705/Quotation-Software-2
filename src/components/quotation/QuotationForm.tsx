@@ -409,7 +409,7 @@ export function QuotationForm({ initialData, isNew }: QuotationFormProps) {
                         <Input 
                           type="number" 
                           value={v.qty !== undefined ? v.qty : 1} 
-                          onChange={e => { const u = [...(editingQuotation.vehicles || [])]; u[idx].qty = e.target.value === '' ? '' : parseInt(e.target.value) || 0; setEditField("vehicles", u); }} 
+                          onChange={e => { const u = [...(editingQuotation.vehicles || [])]; u[idx].qty = (e.target.value === '' ? '' : parseInt(e.target.value) || 0) as any; setEditField("vehicles", u); }} 
                           className={`h-10 text-[13px] ${v.qty === 0 ? 'border-red-500 focus-visible:ring-red-500' : ''}`} 
                         />
                         {v.qty === 0 && <p className="text-[10px] text-red-500 font-bold absolute -bottom-4">Qty cannot be 0</p>}
@@ -419,7 +419,7 @@ export function QuotationForm({ initialData, isNew }: QuotationFormProps) {
                         <Input 
                           type="number" 
                           value={v.days !== undefined ? v.days : 1} 
-                          onChange={e => { const u = [...(editingQuotation.vehicles || [])]; u[idx].days = e.target.value === '' ? '' : parseInt(e.target.value) || 0; setEditField("vehicles", u); }} 
+                          onChange={e => { const u = [...(editingQuotation.vehicles || [])]; u[idx].days = (e.target.value === '' ? '' : parseInt(e.target.value) || 0) as any; setEditField("vehicles", u); }} 
                           className="h-10 text-[13px]" 
                         />
                       </div>
