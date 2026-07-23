@@ -48,7 +48,7 @@ export function RevenueChart() {
               <Tooltip 
                 cursor={{ fill: "hsl(var(--muted))", opacity: 0.2 }}
                 contentStyle={{ borderRadius: "12px", border: "none", boxShadow: "0 10px 30px -10px rgba(0,0,0,0.2)" }}
-                formatter={(value: number) => [`₹${value.toLocaleString()}`, "Amount"]}
+                formatter={(value: any) => [`Rs. ${value.toLocaleString()}`, "Amount"]}
               />
               <Legend verticalAlign="top" height={36} iconType="circle" />
               <Bar dataKey="revenue" name="Revenue" fill="#C69214" radius={[4, 4, 0, 0]} barSize={30} />
