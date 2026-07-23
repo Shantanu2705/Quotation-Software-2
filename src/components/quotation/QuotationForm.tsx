@@ -225,7 +225,7 @@ export function QuotationForm({ initialData, isNew }: QuotationFormProps) {
       </div>
 
       <div className="flex-1 bg-white dark:bg-card rounded-2xl shadow-sm border border-slate-100 dark:border-border p-4 md:p-6 mb-8">
-        <Accordion type="multiple" defaultValue={["customer", "pricing"]} className="space-y-6">
+        <Accordion multiple defaultValue={["customer", "pricing"]} className="space-y-6">
           
           {/* 1. Customer & Travel */}
           <AccordionItem value="customer" className="border border-slate-200 dark:border-border rounded-xl px-4 bg-slate-50/30 dark:bg-muted/10">
