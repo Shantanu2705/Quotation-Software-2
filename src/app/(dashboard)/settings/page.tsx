@@ -16,6 +16,7 @@ export default function SettingsPage() {
     whatsappNumber: "919800011111",
     gstPercent: 5,
     companyLogo: "",
+    brandColor: "#000000",
     headerLogo: "",
     footerLogo: "",
     termsAndConditions: 
